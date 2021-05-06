@@ -1,0 +1,23 @@
+{
+    "name": "boostsales/custom-checkout",
+    "description": "Checkout custom fields",
+    "version": "1.0.0",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "require": {
+        "magento/product-community-edition": "2.3.*"
+    },
+    "authors": [{
+        "name": "Newgen Payments pvt. ltd.",
+        "email": "info@newgenpayments.com",
+        "homepage": "https://www.newgenpayments.com/"
+    }],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Boostsales\\CustomCheckout\\": ""
+        }
+    }
+}
