@@ -1,0 +1,26 @@
+<?php
+/** @var Magento\Backend\Block\Template $block */
+
+/** @var Boostsales\CustomCheckout\Model\Data\Invoice $invoiceEmail */
+
+$invoiceEmail = $block->getInvoiceEmail($block->getOrder());
+
+if($invoiceEmail):
+?>
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?php /* @escapeNotVerified */ echo __('Other information') ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="order-information">
+            <div class="box">
+                <strong
+                    class="box-title"><span><?php /* @escapeNotVerified */ echo __('Invoice Email Address') ?></span></strong>
+                <div class="box-content">
+                    <?php echo $this->escapeHtml($invoiceEmail); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif;?>
