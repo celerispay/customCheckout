@@ -31,7 +31,7 @@
                                                                     <item name="provider" xsi:type="string">checkoutProvider</item>
                                                                     <item name="dataScope" xsi:type="string">shippingAddress.checkout_invoice_email</item>
                                                                     <item name="description" xsi:type="string">Send invoice to another email address</item>
-                                                                    <item name="sortOrder" xsi:type="string">120</item>
+                                                                    <item name="sortOrder" xsi:type="string">150</item>
                                                                 </item>
                                                             </item>
                                                         </item>
