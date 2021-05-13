@@ -2,11 +2,12 @@ define(
     [
         'jquery',
         'Magento_Checkout/js/model/quote',
+        'Magento_Customer/js/model/customer',
         'Magento_Checkout/js/model/url-builder',
         'Magento_Checkout/js/model/error-processor',
         'mage/url'
     ],
-    function($, quote, urlBuilder, errorProcessor, urlFormatter) {
+    function($, quote, customer, urlBuilder, errorProcessor, urlFormatter) {
         'use-strict';
 
         return {
@@ -14,9 +15,14 @@ define(
             save: function(email) {
                 if (email) {
                     var quoteId = quote.getQuoteId();
+                    var isCustomer = customer.isLoggedIn();
                     var url;
 
-                    apiUrl = urlBuilder.createUrl('/guest-carts/:cartId/set-invoice-email', { cartId: quoteId });
+                    if (isCustomer) {
+                        apiUrl = urlBuilder.createUrl('/carts/mine/set-invoice-email', {});
+                    } else {
+                        apiUrl = urlBuilder.createUrl('/guest-carts/:cartId/set-invoice-email', { cartId: quoteId });
+                    }
 
                     var payload = {
                         cartId: quoteId,
