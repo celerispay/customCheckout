@@ -13,25 +13,19 @@
                                             <item name="children" xsi:type="array">
                                                 <item name="shippingAddress" xsi:type="array">
                                                     <item name="children" xsi:type="array">
-                                                        <item name="shipping-address-fieldset" xsi:type="array">
+                                                        <item name="checkout_invoice_email_container" xsi:type="array">
                                                             <item name="component" xsi:type="string">uiComponent</item>
-                                                            <item name="config" xsi:type="array">
-                                                                <item name="deps" xsi:type="array">
-                                                                    <item name="0" xsi:type="string">checkoutProvider</item>
-                                                                </item>
-                                                            </item>
+                                                            <item name="displayArea" xsi:type="string">invoice-email</item>
                                                             <item name="children" xsi:type="array">
                                                                 <item name="checkout_invoice_email" xsi:type="array">
+                                                                    <item name="sortOrder" xsi:type="string">0</item>
                                                                     <item name="component" xsi:type="string">Boostsales_CustomCheckout/js/single-checkbox</item>
-                                                                    <item name="config" xsi:type="array">
-                                                                        <item name="customScope" xsi:type="string">shippingAddress</item>
-                                                                        <item name="template" xsi:type="string">ui/form/field</item>
-                                                                        <item name="prefer" xsi:type="string">checkbox</item>
-                                                                    </item>
                                                                     <item name="provider" xsi:type="string">checkoutProvider</item>
+                                                                    <item name="config" xsi:type="array">
+                                                                        <item name="template" xsi:type="string">ui/form/field</item>
+                                                                    </item>
                                                                     <item name="dataScope" xsi:type="string">shippingAddress.checkout_invoice_email</item>
                                                                     <item name="description" xsi:type="string">Send invoice to another email address</item>
-                                                                    <item name="sortOrder" xsi:type="string">150</item>
                                                                 </item>
                                                             </item>
                                                         </item>
@@ -48,8 +42,4 @@
             </arguments>
         </referenceBlock>
     </body>
-</page>
-
-                    
-                                                                
-                                                                
+</page>                                                             
