@@ -5,7 +5,7 @@ namespace Boostsales\CustomCheckout\Api;
 use Magento\Sales\Model\Order;
 use Boostsales\CustomCheckout\Api\Data\InvoiceInterface;
 /**
- * interface CustomFieldInterdace
+ * interface InvoiceGuestInterface
  *
  * @api
  */
