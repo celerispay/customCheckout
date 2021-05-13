@@ -3,4 +3,5 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Boostsales\CustomCheckout\Api\Data\InvoiceInterface" type="Boostsales\CustomCheckout\Model\Data\Invoice"/>
     <preference for="Boostsales\CustomCheckout\Api\InvoiceGuestInterface" type="Boostsales\CustomCheckout\Model\InvoiceGuest"/>
+    <preference for="Boostsales\CustomCheckout\Api\InvoiceRegisteredInterface" type="Boostsales\CustomCheckout\Model\InvoiceRegistered"/>
 </config>
