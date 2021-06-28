@@ -4,8 +4,9 @@
 /** @var Boostsales\CustomCheckout\Model\Data\Invoice $invoiceEmail */
 
 $invoiceEmail = $block->getInvoiceEmail($block->getOrder());
+$poNumber =   $block->getPoNumber($block->getOrder());
 
-if($invoiceEmail):
+if($invoiceEmail || $poNumber):
 ?>
 <section class="admin__page-section">
     <div class="admin__page-section-title">
@@ -13,6 +14,7 @@ if($invoiceEmail):
     </div>
     <div class="admin__page-section-content">
         <div class="order-information">
+        <?php if($invoiceEmail){?>
             <div class="box">
                 <strong
                     class="box-title"><span><?php /* @escapeNotVerified */ echo __('Invoice Email Address') ?></span></strong>
@@ -20,6 +22,16 @@ if($invoiceEmail):
                     <?php echo $this->escapeHtml($invoiceEmail); ?>
                 </div>
             </div>
+            <?php } ?>
+            <?php if($poNumber){?>
+            <div class="box">
+                <strong
+                    class="box-title"><span><?php /* @escapeNotVerified */ echo __('PO Number') ?></span></strong>
+                <div class="box-content">
+                    <?php echo $this->escapeHtml($poNumber); ?>
+                </div>
+            </div>
+            <?php }?>
         </div>
     </div>
 </section>

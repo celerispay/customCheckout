@@ -30,12 +30,30 @@ class InstallSchema implements InstallSchemaInterface
                 ) 
         );
         $update->addColumn(
+            $installer->getTable('quote'),
+            'po_number',
+            array(
+                'type' =>\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                'length' => 255,
+                'comment' => 'PO Number'
+            ) 
+        );
+        $update->addColumn(
             $installer->getTable('sales_order'),
             'checkout_invoice_email',
             array(
                 'type' =>\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                 'length' => 255,
                 'comment' => 'Custom checkout invoice email'
+            ) 
+        );
+        $update->addColumn(
+            $installer->getTable('sales_order'),
+            'po_number',
+            array(
+                'type' =>\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                'length' => 255,
+                'comment' => 'PO Number'
             ) 
         );
         $installer->endSetup();

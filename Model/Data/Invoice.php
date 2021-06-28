@@ -27,4 +27,25 @@ class Invoice extends AbstractExtensibleObject implements InvoiceInterface
     public function setCheckoutInvoiceEmail(string $checkoutInvoiceEmail){
         return $this->setData('checkout_invoice_email',$checkoutInvoiceEmail);
     }
+
+     /*
+    * Get Po Number
+    *   
+    * @return string|null 
+    */
+    public function getPoNumber(){
+        return $this->_get('po_number');
+    } 
+
+    /*
+    * set Po Number
+    *
+    * @param string $poNumber
+    *
+    * @return void
+    *
+    */
+    public function setPoNumber(string $poNumber){
+        return $this->setData('po_number',$poNumber);
+    }
 }

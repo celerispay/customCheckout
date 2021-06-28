@@ -44,4 +44,16 @@ class InvoiceEmail extends Template
         }
     }
 
+    public function getPoNumber(Order $order){
+        if (!$order->getId()) {
+                return;
+        }
+        if($order->getData('po_number')){
+            $this->invoiceGuest->setPoNumber($order->getData('po_number'));
+            return $this->invoiceGuest->getPoNumber();
+        }else{
+            return false;
+        }
+    }
+
 }

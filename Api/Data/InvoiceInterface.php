@@ -25,4 +25,18 @@ interface InvoiceInterface
      * @return void
      */
     public function setCheckoutInvoiceEmail(string $checkoutInvoiceEmail);
+
+        /**
+     * Set PO Number Email
+     * @param string $poNumber
+     * @return void
+     */
+    public function setPoNumber(string $poNumber);
+
+        /**
+     * Get PO Number Email
+     *
+     * @return string
+     */
+    public function getPoNumber();
 }

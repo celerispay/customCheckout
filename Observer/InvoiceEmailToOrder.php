@@ -11,7 +11,7 @@ class InvoiceEmailToOrder implements ObserverInterface
 
         $order = $observer->getEvent()->getOrder();
         $quote = $observer->getEvent()->getQuote();
-
         $order->setData('checkout_invoice_email',$quote->getData('checkout_invoice_email'));
+        $order->setData('po_number',$quote->getData('po_number'));
     }
 }
