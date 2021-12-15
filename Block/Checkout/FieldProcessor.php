@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Boostsales\CustomCheckout\Block\Checkout;
 
 class FieldProcessor
@@ -22,7 +22,7 @@ class FieldProcessor
                 'options' => [],
                 'id' => 'custom-check'
             ],
-            'dataScope' => 'shippingAddress.custom_attributes.custom_check',
+            'dataScope' => 'custom_check',
             'provider' => 'checkoutProvider',
             'visible' => true,
             'label' => __('Private/Business Address'),
@@ -31,7 +31,7 @@ class FieldProcessor
             'id' => 'custom-check'
         ];
 
-    
+
         return $jsLayout;
     }
 }
