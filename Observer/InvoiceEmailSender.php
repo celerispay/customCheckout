@@ -5,18 +5,31 @@ namespace Boostsales\CustomCheckout\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Observer;
 use Psr\Log\LoggerInterface;
+use Magento\Framework\App\Helper\Context;
+use Magento\Framework\Mail\Template\TransportBuilder;
+use Magento\Framework\Translate\Inline\StateInterface;
+use Magento\Store\Model\StoreManagerInterface;
+
 
 class InvoiceEmailSender implements ObserverInterface
 {
-        /**
-     * @var LoggerInterface
-     */
-    protected $logger;
+    protected $transportBuilder;
+    protected $storeManager;
+    protected $inlineTranslation;
 
     public function __construct(
+        Context $context,
+        TransportBuilder $transportBuilder,
+        StoreManagerInterface $storeManager,
+        StateInterface $state,
         LoggerInterface $logger
-    ) {
+    )
+    {
+        $this->transportBuilder = $transportBuilder;
+        $this->storeManager = $storeManager;
+        $this->inlineTranslation = $state;
         $this->logger = $logger;
+        parent::__construct($context);
     }
 
     public function execute(Observer $observer){
