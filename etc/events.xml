@@ -6,4 +6,7 @@
     <event name="sales_order_invoice_save_after">
         <observer name="Boostsales_checkout_invoice_email_send" instance="Boostsales\CustomCheckout\Observer\InvoiceEmailSender"/>
     </event>
+    <event name="sales_order_place_after">
+        <observer name="Boostsales_create_account" instance="Boostsales\CustomCheckout\Observer\CheckoutCreateAccount" />
+    </event>
 </config>
