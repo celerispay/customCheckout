@@ -20,7 +20,7 @@ class InvoiceEmailSender implements ObserverInterface
     protected $addressRenderer;
     protected $paymentHelper;
     protected $_scopeConfig;
-    
+
     const XML_PATH_EMAIL_IDENTITY = 'trans_email/ident_general/email';
     const XML_PATH_EMAIL_NAME = 'trans_email/ident_general/name';
     const XML_PATH_EMAIL_TEMPLATE = 'sales_email/invoice/template';
@@ -30,39 +30,39 @@ class InvoiceEmailSender implements ObserverInterface
         TransportBuilder $transportBuilder,
         StoreManagerInterface $storeManager,
         StateInterface $state,
-	LoggerInterface $logger,
-	Renderer $addressRenderer,
-	PaymentHelper $paymentHelper,
-	\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-    )
-    {
+        LoggerInterface $logger,
+        Renderer $addressRenderer,
+        PaymentHelper $paymentHelper,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+    ) {
         $this->transportBuilder = $transportBuilder;
         $this->storeManager = $storeManager;
         $this->inlineTranslation = $state;
-	$this->logger = $logger;
-	$this->addressRenderer = $addressRenderer;
-	$this->paymentHelper = $paymentHelper;
-	$this->_scopeConfig = $scopeConfig;
+        $this->logger = $logger;
+        $this->addressRenderer = $addressRenderer;
+        $this->paymentHelper = $paymentHelper;
+        $this->_scopeConfig = $scopeConfig;
     }
 
-    public function execute(Observer $observer){
-	
+    public function execute(Observer $observer)
+    {
+
         $invoice = $observer->getEvent()->getInvoice();
-	$order = $invoice->getOrder();
-	$storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
-	if(!$order->getCheckoutInvoiceEmail() || is_null($order->getCheckoutInvoiceEmail())){
-		return $this;
-	}
-        $fromEmail = $this->_scopeConfig->getValue(self::XML_PATH_EMAIL_IDENTITY,$storeScope);
-        $fromName = $this->_scopeConfig->getValue(self::XML_PATH_EMAIL_NAME,$storeScope);
-	try {	
+        $order = $invoice->getOrder();
+        $storeScope = \Magento\Store\Model\ScopeInterface::SCOPE_STORE;
+        if (!$order->getCheckoutInvoiceEmail() || is_null($order->getCheckoutInvoiceEmail())) {
+            return $this;
+        }
+        $fromEmail = $this->_scopeConfig->getValue(self::XML_PATH_EMAIL_IDENTITY, $storeScope);
+        $fromName = $this->_scopeConfig->getValue(self::XML_PATH_EMAIL_NAME, $storeScope);
+        try {
             $from = ['email' => $fromEmail, 'name' => $fromName];
             $this->inlineTranslation->suspend();
-	    if($order->getCustomerIsGuest()){
-        	$templateId = $this->_scopeConfig->getValue(self::XML_PATH_GUEST_EMAIL_TEMPLATE,$storeScope);
-	    }else{
-		$templateId = $this->_scopeConfig->getValue(self::XML_PATH_EMAIL_TEMPLATE,$storeScope);
-	    }
+            if ($order->getCustomerIsGuest()) {
+                $templateId = $this->_scopeConfig->getValue(self::XML_PATH_GUEST_EMAIL_TEMPLATE, $storeScope);
+            } else {
+                $templateId = $this->_scopeConfig->getValue(self::XML_PATH_EMAIL_TEMPLATE, $storeScope);
+            }
             $templateOptions = [
                 'area' => \Magento\Framework\App\Area::AREA_FRONTEND,
                 'store' => $invoice->getStore()->getId()
@@ -73,11 +73,11 @@ class InvoiceEmailSender implements ObserverInterface
                 'invoice' => $invoice,
                 'invoice_id' => $invoice->getId(),
                 'comment' => $invoice->getCustomerNoteNotify() ? $invoice->getCustomerNote() : '',
-		'billing' => $order->getBillingAddress(),
-		'payment_html' => $this->paymentHelper->getInfoBlockHtml($order->getPayment(),$order->getStore()->getStoreId()),
+                'billing' => $order->getBillingAddress(),
+                'payment_html' => $this->paymentHelper->getInfoBlockHtml($order->getPayment(), $order->getStore()->getStoreId()),
                 'store' => $order->getStore(),
                 'formattedShippingAddress' => $this->addressRenderer->format($order->getShippingAddress(), 'html'),
-                'formattedBillingAddress' => $this->addressRenderer->format($order->getBillingAddress(),'html'),
+                'formattedBillingAddress' => $this->addressRenderer->format($order->getBillingAddress(), 'html'),
                 'order_data' => [
                     'customer_name' => $order->getCustomerName(),
                     'is_not_virtual' => $order->getIsNotVirtual(),
