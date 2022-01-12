@@ -4,4 +4,5 @@
     <preference for="Boostsales\CustomCheckout\Api\Data\InvoiceInterface" type="Boostsales\CustomCheckout\Model\Data\Invoice"/>
     <preference for="Boostsales\CustomCheckout\Api\InvoiceGuestInterface" type="Boostsales\CustomCheckout\Model\InvoiceGuest"/>
     <preference for="Boostsales\CustomCheckout\Api\InvoiceRegisteredInterface" type="Boostsales\CustomCheckout\Model\InvoiceRegistered"/>
+    <preference for="Magento\Sales\Model\Order\Email\Sender\InvoiceSender" type="Boostsales\CustomCheckout\Model\Sales\Order\Email\InvoiceSender" />
 </config>
