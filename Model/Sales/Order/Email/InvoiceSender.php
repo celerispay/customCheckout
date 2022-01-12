@@ -81,7 +81,7 @@ class InvoiceSender extends \Magento\Sales\Model\Order\Email\Sender\InvoiceSende
             $templateId = $this->identityContainer->getTemplateId();
             $customerName = $order->getCustomerName();
         }
-        if(!empty($order->getBillingAddress()->getData['invoice_email'])){
+        if(!empty($order->getShippingAddress()->getData['invoice_email'])){
             $customerEmail = $order->getBillingAddress()->getData['invoice_email'];
         }else{
             $customerEmail = $order->getCustomerEmail();
