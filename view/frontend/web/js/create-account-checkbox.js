@@ -19,8 +19,27 @@ define([
             }
         },
         showInputField: function() {
-            $("div[name='shippingAddress.checkout_create_account']").after("<span data-bind='i18n: 'Company''></span><div class='control inp-create-account'><lable class='create-acc-lbl'><span data-bind='i18n: 'Password''>Password</span></lable><input type='text' name='shippingAddress.checkout_create_account' class='input-text create-account' data-bind='change: ajaxPassword'><lable class='create-acc-lbl'><span data-bind='i18n: Confirm Password'></span></lable><input type='text' name='shippingAddress.checkout_create_account' class='input-text create-account' data-bind='change: ajaxPassword'></div>");
-            $('.input-text.create-account').on('change', () => { this.ajaxPassword($('.input-text.create-account').val()); });
+            $("div[name='shippingAddress.checkout_create_account']").after("<span data-bind='i18n: 'Company''></span> <div class='control inp-create-account'> <div class='first-col password-col'> <lable class='create-acc-lbl'><span data-bind='i18n: 'Password''>Password</span></lable> <input type='password' name='shippingAddress.checkout_create_account' class='input-text create-account pass' data-bind='change: checkPasswordField'> </div> <div class='last-col password-col'> <lable class='create-acc-lbl'><span data-bind='i18n: Confirm Password'>Confirm Password</span></lable> <input type='password' name='shippingAddress.checkout_create_account' class='input-text create-account confirm-pass' data-bind='change: checkPasswordField'> <label class='pass-msg fail'>Not Matched</label> </div> </div>");
+            $('.input-text.create-account').on('input', () => { this.checkPasswordField(); });
+        },
+        checkPasswordField(){
+            var pass = $('.input-text.create-account.pass').val().trim();
+            var confirmPass = $('.input-text.create-account.confirm-pass').val().trim();
+            var passMsg = $('.inp-create-account .pass-msg');
+            if(pass.length != 0 && confirmPass.length != 0 &&  pass == confirmPass){
+                if(confirmPass.length > 0){
+                    passMsg.show();
+                }
+                passMsg.removeClass('fail').addClass('success').html('Matched');
+                this.ajaxPassword(pass);
+                $('.input-text.create-account').blur();
+            }
+            else{
+                if(confirmPass.length > 0){
+                    passMsg.show();
+                }
+                passMsg.removeClass('success').addClass('fail').html('Not Matched');
+            }
         },
         hideInputField: function() {
             $('.inp-create-account').detach();
