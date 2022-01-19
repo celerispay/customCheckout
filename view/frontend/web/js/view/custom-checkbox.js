@@ -19,9 +19,15 @@ define(
             change: function(value) {
                 if (value === 'company') {
                     $('div[name="shippingAddress.company"]').show();
+                    $('div[name="shippingAddress.dept_extra_info"]').show();
+                    $('div[name="billingAddress.company"]').show();
+                    $('div[name="billingAddress.dept_extra_info"]').show();
                     $('div[name="shippingAddress.custom_attributes.customer_taxvat"]').show();
                 } else if (value === 'private') {
                     $('div[name="shippingAddress.company"]').hide();
+                    $('div[name="shippingAddress.dept_extra_info"]').hide();
+                    $('div[name="billingAddress.company"]').hide();
+                    $('div[name="billingAddress.dept_extra_info"]').hide();
                     $('div[name="shippingAddress.custom_attributes.customer_taxvat"]').hide();
                 }
             }
