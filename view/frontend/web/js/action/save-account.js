@@ -21,7 +21,7 @@ define(
                     if (isCustomer) {
                         return true;
                     } else {
-                        apiUrl = urlFormatter.build('CustomCheckout/checkout/saveInQuote', { cartId: quoteId });
+                        apiUrl = urlFormatter.build('CustomCheckout/checkout/saveCreateAccount', { cartId: quoteId });
                     }
 
                     var payload = {
