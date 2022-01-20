@@ -24,7 +24,7 @@ class FieldProcessor
     public function afterProcess(\Magento\Checkout\Block\Checkout\LayoutProcessor $processor, $jsLayout)
     {
         $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']
-        ['shippingAddress']['children']['shipping-address-fieldset']['children']['custom_check'] = [
+        ['shippingAddress']['children']['customer-email']['children']['before-login-form']['children']['custom_check'] = [
             'component' => 'Boostsales_CustomCheckout/js/view/custom-checkbox',
             'config' => [
                 'customScope' => 'shippingAddress.custom_check',
