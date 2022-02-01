@@ -27,7 +27,7 @@
                                                                                 <item name="template" xsi:type="string">ui/form/field</item>
                                                                             </item>
                                                                             <item name="dataScope" xsi:type="string">shippingAddress.checkout_create_account</item>
-                                                                            <item name="description" xsi:type="string" translate="true">Create an account</item>
+                                                                            <item name="description" xsi:type="string" translate="true">Create an account for later use</item>
                                                                         </item>
                                                                     </item>
                                                                 </item>

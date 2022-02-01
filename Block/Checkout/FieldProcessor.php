@@ -36,7 +36,7 @@ class FieldProcessor
             'dataScope' => 'custom_check',
             'provider' => 'checkoutProvider',
             'visible' => true,
-            'label' => __('Private/Business Address'),
+            'label' => __('Address Type'),
             'validation' => [],
             'sortOrder' => 0,
             'id' => 'custom-check'
@@ -54,7 +54,7 @@ class FieldProcessor
             'dataScope' => 'invoice_email_check',
             'provider' => 'checkoutProvider',
             'visible' => true,
-            'label' => __('Send invoice to another email'),
+            'label' => __('Please send the invoice to another email address'),
             'validation' => [],
             'sortOrder' => 3,
             'id' => 'invoice_email_check'
