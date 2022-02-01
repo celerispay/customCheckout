@@ -54,9 +54,9 @@ class FieldProcessor
             'dataScope' => 'invoice_email_check',
             'provider' => 'checkoutProvider',
             'visible' => true,
-            'label' => __('send invoice to another email'),
+            'label' => __('Send invoice to another email'),
             'validation' => [],
-            'sortOrder' => 199,
+            'sortOrder' => 3,
             'id' => 'invoice_email_check'
             ];
         if($this->customerSession->isLoggedIn()){
