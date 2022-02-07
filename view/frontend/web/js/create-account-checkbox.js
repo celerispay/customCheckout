@@ -8,21 +8,25 @@ define([
     return AbstractField.extend({
 
         initObservable: function() {
-            return this._super().observe(['createAccount'])
+            return this._super().observe({isShowCreateUser: false})
         },
         onCheckedChanged: function(event) {
             this._super();
-            if (event == true) {
+
+            if (isShowCreateUser()) {
                 this.showInputField();
             } else {
                 this.hideInputField();
             }
         },
         showInputField: function() {
-            $("div[name='shippingAddress.checkout_create_account']").after("<span data-bind='i18n: 'Company''></span> <div class='control inp-create-account'> <div class='first-col password-col'> <lable class='create-acc-lbl'><span data-bind='i18n: 'Password''>Password</span></lable> <input type='password' name='shippingAddress.checkout_create_account' class='input-text create-account pass' data-bind='change: checkPasswordField'> </div> <div class='last-col password-col'> <lable class='create-acc-lbl'><span data-bind='i18n: Confirm Password'>Confirm Password</span></lable> <input type='password' name='shippingAddress.checkout_create_account' class='input-text create-account confirm-pass' data-bind='change: checkPasswordField'> <label class='pass-msg fail'>Not Matched</label> </div> </div>");
-            $('.input-text.create-account').on('input', () => { this.checkPasswordField(); });
+            if(this.isShowCreateUser()){
+                return true;
+            }else {
+                return false;
+            }
         },
-        checkPasswordField(){
+        checkPasswordField: function(){
             var pass = $('.input-text.create-account.pass').val().trim();
             var confirmPass = $('.input-text.create-account.confirm-pass').val().trim();
             var passMsg = $('.inp-create-account .pass-msg');
@@ -41,9 +45,7 @@ define([
                 passMsg.removeClass('success').addClass('fail').html('Not Matched');
             }
         },
-        hideInputField: function() {
-            $('.inp-create-account').detach();
-        },
+
         ajaxPassword: function(pass) {
             saveAccount.save(pass);
         }

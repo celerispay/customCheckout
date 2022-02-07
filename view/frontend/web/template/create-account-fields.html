@@ -1,0 +1,16 @@
+<input type="checkbox" data-bind="checked: isShowCreateUser"><span  data-bind="i18n: 'Create an account for later use'"></span>
+<div class='control inp-create-account' data-bind="visible:showInputField()">
+    <div class='first-col password-col'>
+        <lable class='create-acc-lbl'>
+            <span data-bind="i18n: 'Password'"></span>
+        </lable>
+        <input type='password' name='shippingAddress.checkout_create_account' class='input-text create-account pass' data-bind="value: checkPasswordField()">
+    </div>
+    <div class='last-col password-col'>
+        <lable class='create-acc-lbl'>
+            <span data-bind="i18n: 'Confirm Password'"></span>
+        </lable>
+        <input type='password' name='shippingAddress.checkout_create_account' class='input-text create-account confirm-pass' data-bind="value: checkPasswordField()">
+        <label class='pass-msg fail'>Not Matched</label>
+    </div>
+</div>

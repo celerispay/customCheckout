@@ -25,6 +25,7 @@
                                                                             <item name="provider" xsi:type="string">checkoutProvider</item>
                                                                             <item name="config" xsi:type="array">
                                                                                 <item name="template" xsi:type="string">ui/form/field</item>
+                                                                                <item name="elementTmpl" xsi:type="string">Boostsales_CustomCheckout/create-account-fields</item>
                                                                             </item>
                                                                             <item name="dataScope" xsi:type="string">shippingAddress.checkout_create_account</item>
                                                                             <item name="description" xsi:type="string" translate="true">Create an account for later use</item>
