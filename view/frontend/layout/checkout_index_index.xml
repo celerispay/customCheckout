@@ -45,6 +45,12 @@
                                                                 <item name="company" xsi:type="array">
                                                                     <item name="sortOrder" xsi:type="string">5</item>
                                                                 </item>
+                                                                <item name="postcode" xsi:type="array">
+                                                                    <item name="sortOrder" xsi:type="string">114</item>
+                                                                </item>
+                                                                <item name="city" xsi:type="array">
+                                                                    <item name="sortOrder" xsi:type="string">115</item>
+                                                                </item>
                                                             </item>
                                                         </item>
                                                     </item>
