@@ -66,7 +66,7 @@ class FieldProcessor
             unset($jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']['payment']['children']['afterMethods']['children']['billing-address-form']);
         }
         if ($this->customerSession->isLoggedIn()) {
-            unset($jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']['shippingAddress']['children']['checkout_create_account']);
+            unset($jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']['shippingAddress']['children']['before-form']['children']['checkout_create_account']);
         }
 
         return $jsLayout;
